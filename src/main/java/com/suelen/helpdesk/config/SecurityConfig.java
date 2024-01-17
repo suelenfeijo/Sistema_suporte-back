@@ -108,7 +108,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		/*
 		 * registrando configuração de cors para permitir receber requisições de tds os lugares
 		 */
-		source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
 		return source;
 	}
 
