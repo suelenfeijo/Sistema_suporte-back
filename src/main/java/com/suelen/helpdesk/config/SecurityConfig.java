@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	/*
 	 * tudo que vier após o /h2-console/ será liberada
 	 */
-	private static final String[] PUBLIC_MATCHERS = { "/h2-console/**" , "http://localhost:4200/**" };
+	private static final String[] PUBLIC_MATCHERS = { "/h2-console/**" , "http://localhost:4200/**","https://helpdesk-back.onrender.com/**" };
 
 	/*
 	 * ele é uma interface que representa o ambiente do aplicativo, e consegue pegar todos os perfis ativos
