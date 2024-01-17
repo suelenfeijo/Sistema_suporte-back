@@ -111,7 +111,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
 		return source;
 	}
-
+	
+	
 	
 	/*
 	 * bean do bcrypt para poder injetar em qualquer outra parte do código

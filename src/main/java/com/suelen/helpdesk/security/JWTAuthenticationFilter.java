@@ -128,8 +128,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		String token = jwtUtil.generateToken(username);
 		response.addHeader("Access-control-expose-headers ", "Authorization");
 
+        	response.addHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
+        	response.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, enctype, Location");
         	response.addHeader("Authorization", "Bearer " + token);
 	}
+	
+	
 	
 	/*
 	 * método de não sucesso de autenticação, caso autenticação ocorra sem sucesso
