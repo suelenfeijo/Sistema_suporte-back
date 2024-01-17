@@ -1,21 +1,10 @@
 package com.suelen.helpdesk;
 
-import java.util.Arrays;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import com.suelen.helpdesk.domain.Chamado;
-import com.suelen.helpdesk.domain.Cliente;
-import com.suelen.helpdesk.domain.Tecnico;
-import com.suelen.helpdesk.domain.enums.Perfil;
-import com.suelen.helpdesk.domain.enums.Prioridade;
-import com.suelen.helpdesk.domain.enums.Status;
-import com.suelen.helpdesk.repositories.ChamadoRepository;
-import com.suelen.helpdesk.repositories.ClienteRepository;
-import com.suelen.helpdesk.repositories.TecnicoRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class HelpdeskApplication /*implements CommandLineRunner*/{
@@ -32,6 +21,23 @@ public class HelpdeskApplication /*implements CommandLineRunner*/{
 	//esse método é implementado pelo comand liner runner
 	//sempre que o spring startado, ele executa junto
 	
-	}			
+				
+
+@Bean
+public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**")
+                    .allowedOrigins("*")
+                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                    .allowedHeaders("*");
+        }
+    };
+    
+    
+}
+
+}
 
 

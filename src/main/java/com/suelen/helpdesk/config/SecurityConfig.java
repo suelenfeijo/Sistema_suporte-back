@@ -21,6 +21,7 @@ import com.suelen.helpdesk.security.JWTAuthenticationFilter;
 import com.suelen.helpdesk.security.JWTAuthorizationFilter;
 import com.suelen.helpdesk.security.JWTUtil;
 
+
 @EnableWebSecurity //essa anotação já possui @configuration
 //essa anotação é quem permite ser possível utilizar a anotação preAutorize
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -108,7 +109,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		/*
 		 * registrando configuração de cors para permitir receber requisições de tds os lugares
 		 */
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
 	
