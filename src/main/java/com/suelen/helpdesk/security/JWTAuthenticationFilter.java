@@ -126,14 +126,23 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		 */
 		String username = ((UserSS) auth.getPrincipal()).getUsername();
 		String token = jwtUtil.generateToken(username);
-		
+		response.setHeader(
+			    "Access-Control-Allow-Origin",
+			    "http://localhost:4200"
+			  );
 			response.addHeader("Access-control-expose-headers ", "Authorization");
-        	response.addHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
-        	response.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, enctype, Location");
+        	response.addHeader("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS,CONNECT,TRACE");
+        	response.addHeader("Access-Control-Allow-Headers", "Content-Type, enctype, Location, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers");
         	response.addHeader("Authorization", "Bearer " + token);
+        	response.setHeader("Access-Control-Allow-Credentials", token);
+        	response.setHeader("Access-Control-Allow-Private-Network", token);
 	}
 	
-	
+	/*response.addHeader("Access-control-expose-headers ", "Authorization");
+
+        	response.addHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
+        	response.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, enctype, Location");
+        	response.addHeader("Authorization", "Bearer " + token);*/
 	
 	/*
 	 * método de não sucesso de autenticação, caso autenticação ocorra sem sucesso
