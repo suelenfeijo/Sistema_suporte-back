@@ -136,7 +136,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         	response.addHeader("Authorization", "Bearer " + token);
         	response.setHeader("Access-Control-Allow-Credentials", token);
         	response.setHeader("Access-Control-Allow-Private-Network", token);
-	}
+	}/**/
 	
 	/*response.addHeader("Access-control-expose-headers ", "Authorization");
 
