@@ -16,6 +16,7 @@ public class DevConfig {
 	private DBService dbService;
 	
 	 
+	/*Obtendo valor de spring.jpa.hibernate.ddl-auto do @Profile dev*/
 	@Value ("${spring.jpa.hibernate.ddl-auto}")
 	private String value;
 	

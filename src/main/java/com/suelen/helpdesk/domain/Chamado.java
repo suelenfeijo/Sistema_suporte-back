@@ -2,8 +2,10 @@ package com.suelen.helpdesk.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +34,7 @@ public class Chamado implements Serializable {
 	private String titulo;
 	private String observacoes;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "tecnico_id")
 	private Tecnico tecnico;
 
@@ -55,6 +57,21 @@ public class Chamado implements Serializable {
 		this.tecnico = tecnico;
 		this.cliente = cliente;
 	}
+
+	public Chamado(List<Chamado> c) {
+		for (int i = 0; i < c.size(); i++) {
+			this.dataAbertura = c.get(i).getDataAbertura();
+			this.dataFechamento = c.get(i).getDataFechamento();
+			this.id = c.get(i).getId();
+			this.status = c.get(i).getStatus();
+			this.titulo = getTitulo();
+			this.prioridade = c.get(i).getPrioridade();
+			this.cliente = c.get(i).getCliente();
+			this.tecnico = c.get(i).getTecnico();
+			this.observacoes = c.get(i).getObservacoes();
+	}
+	}
+
 
 	public Integer getId() {
 		return id;

@@ -2,40 +2,53 @@ package com.suelen.helpdesk.domain.dtos;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.springframework.beans.BeanUtils;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.suelen.helpdesk.domain.Chamado;
+import com.suelen.helpdesk.domain.Cliente;
+import com.suelen.helpdesk.domain.Tecnico;
+import com.suelen.helpdesk.domain.enums.Prioridade;
+import com.suelen.helpdesk.domain.enums.Status;
 
-public class ChamadoDTO implements Serializable {
+@Entity
+public class ChamadoDsDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	 Integer id;
+	public static void main (String[]args) {
+		
+		
+	}
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataAbertura = LocalDate.now();
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFechamento;
-	@NotNull(message = "O campo PRIORIDADE é requerido")
 	private Integer prioridade;
-	@NotNull(message = "O campo STATUS é requerido")
 	private Integer status;
-	@NotNull(message = "O campo TITULO é requerido")
 	private String titulo;
-	@NotNull(message = "O campo OBSERVAÇÕES é requerido")
 	private String observacoes;
+	private Integer tecnico;
+	
 
-	private Integer tecnico = 0;
-	@NotNull(message = "O campo CLIENTE é requerido")
 	private Integer cliente;
 	private String nomeTecnico;
 	private String nomeCliente;
-
-	public ChamadoDTO() {
+	
+	public ChamadoDsDTO() {
 		super();
 	}
 
-	public ChamadoDTO(Chamado obj) {
+	public ChamadoDsDTO(Chamado obj) {
 		this.id = obj.getId();
 		this.dataAbertura = obj.getDataAbertura();
 		this.dataFechamento = obj.getDataFechamento();
@@ -43,13 +56,55 @@ public class ChamadoDTO implements Serializable {
 		this.status = obj.getStatus().getCodigo();
 		this.titulo = obj.getTitulo();
 		this.observacoes = obj.getObservacoes();
-		
 		this.tecnico = obj.getTecnico().getId();
-		
 		this.cliente = obj.getCliente().getId();
-		this.nomeCliente = obj.getCliente().getNome();
+
 		this.nomeTecnico = obj.getTecnico().getNome();
+		this.nomeCliente = obj.getCliente().getNome();
 	}
+	
+	
+
+
+
+
+	
+
+	public ChamadoDsDTO(ChamadoDsDTO obj) {
+		BeanUtils.copyProperties(obj, this);
+
+	}
+
+	public ChamadoDsDTO(List<Chamado> obj) {
+	
+		
+		for (int i = 0; i < obj.size(); i++) {		
+		this.id = obj.get(i).getId();
+		this.dataAbertura = obj.get(i).getDataAbertura();
+		this.dataFechamento = obj.get(i).getDataFechamento();
+		this.prioridade = obj.get(i).getPrioridade().getCodigo();
+		this.status = obj.get(i).getStatus().getCodigo();
+		this.titulo = obj.get(i).getTitulo();
+		this.observacoes = obj.get(i).getObservacoes();
+		this.tecnico = obj.get(i).getTecnico().getId();
+		this.cliente = obj.get(i).getCliente().getId();
+
+		this.nomeTecnico = obj.get(i).getTecnico().getNome();
+		this.nomeCliente = obj.get(i).getCliente().getNome();
+		}
+
+			 
+	}
+		
+		
+	
+
+	public ChamadoDsDTO(Cliente cliente2, Tecnico tecnico2, String titulo2, LocalDate dataAbertura2,
+			LocalDate dataFechamento2, String observacoes2, Status status2, Prioridade prioridade2) {
+	}
+	
+	
+	
 
 	public Integer getId() {
 		return id;

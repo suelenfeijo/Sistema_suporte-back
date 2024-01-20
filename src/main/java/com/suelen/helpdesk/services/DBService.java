@@ -16,6 +16,7 @@ import com.suelen.helpdesk.repositories.ChamadoRepository;
 import com.suelen.helpdesk.repositories.ClienteRepository;
 import com.suelen.helpdesk.repositories.TecnicoRepository;
 
+/*Mockagem de dados*/
 @Service
 public class DBService {
 	@Autowired
@@ -35,18 +36,18 @@ public class DBService {
 	Tecnico tec1 = new Tecnico(null, "Michael Jackson", "20858233517", "michaelj@mail.com", encoder.encode("123"));
 	tec1.addPerfil(Perfil.ADMIN);
 	
-	Tecnico tec2 = new Tecnico(null, "feijo", "70362484406", "suelen@mail.com", encoder.encode("123"));
+	Tecnico tec2 = new Tecnico(2, "feijo", "70362484406", "suelen@mail.com", encoder.encode("123"));
 	tec2.addPerfil(Perfil.ADMIN);
 
 	
 	Cliente cli1 = new Cliente(null, "Sia Chandeler", "66354895252", "sia@mail.com", encoder.encode("123"));
 
-	Chamado c1 = new Chamado(null, Prioridade.ALTA, Status.ABERTO, "Conserto pc", "hd quebrou", tec1, cli1);
+	/*Chamado c1 = new Chamado(null, Prioridade.ALTA, Status.ABERTO, "Conserto pc", "hd quebrou", tec1, cli1);*/
 
 	Chamado c2 = new Chamado(null, Prioridade.ALTA, Status.ENCERRADO, "Conserto impressora", "cabeça de impressão ruim", tec1, cli1);
 
 	tecnicoRepository.saveAll(Arrays.asList(tec1,tec2));
 	clienteRepository.saveAll(Arrays.asList(cli1));
-	chamadoRepository.saveAll(Arrays.asList(c1,c2));
+	chamadoRepository.saveAll(Arrays.asList(c2));
 }
 }

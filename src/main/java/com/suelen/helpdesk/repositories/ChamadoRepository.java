@@ -6,4 +6,5 @@ import com.suelen.helpdesk.domain.Chamado;
 
 public interface ChamadoRepository extends JpaRepository<Chamado, Integer> {
 	
+
 }

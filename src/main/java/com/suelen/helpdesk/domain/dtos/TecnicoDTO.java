@@ -17,7 +17,7 @@ import com.suelen.helpdesk.domain.enums.Perfil;
 public class TecnicoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	protected Integer id;
+	public Integer id;
 	@NotNull(message = "O campo NOME é requerido")
 	protected String nome;
 	@NotNull(message = "O campo CPF é requerido")

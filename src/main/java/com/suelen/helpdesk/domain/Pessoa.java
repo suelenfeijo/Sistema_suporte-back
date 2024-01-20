@@ -15,7 +15,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -39,7 +38,9 @@ public abstract class Pessoa implements Serializable {
 	@Column (unique = true)
 	protected String cpf;
 	
-	
+
+
+    
 	@Column (unique = true)
 	protected String email;
 	
@@ -113,7 +114,7 @@ public abstract class Pessoa implements Serializable {
 		this.senha = senha;
 	}
 	public Set<Perfil> getPerfis() {
-		//transformando um perfil 
+		//Convertendo um Perfil(ENUM) em uma lista de perfis
 		return perfis.stream().map( x -> Perfil.toEnum(x)).collect(Collectors.toSet());
 	}
 	//não recebe uma lista, e apenas um perfil.

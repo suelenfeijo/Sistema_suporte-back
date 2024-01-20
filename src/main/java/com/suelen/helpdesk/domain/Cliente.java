@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PostRemove;
+import javax.persistence.PreRemove;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.beans.BeanUtils;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.suelen.helpdesk.domain.dtos.ClienteDTO;
@@ -20,12 +24,17 @@ public class Cliente extends Pessoa {
 	
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "cliente")
+	//@OnDelete(action = OnDeleteAction.NO_ACTION)
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Chamado> chamados = new ArrayList<>();
 
+	
+	
+	
 	public Cliente() {
 		super();
 		addPerfil(Perfil.CLIENTE);
+
 	}
 
 	public Cliente(Integer id, String nome, String cpf, String email, String senha) {
@@ -52,4 +61,24 @@ public class Cliente extends Pessoa {
 		this.chamados = chamados;
 	}
 
+	public Cliente(Cliente obj) {
+		// copiando os objetos dessa classe para o obj (os nomes tem que ser iguais)
+		this.chamados = obj.getChamados();
+	}
+	
+	
+	
+	@PostRemove
+	public void deleteChamados() {
+		
+		
+		for (Chamado chamado : chamados) {
+			// removendo a associação com chamado
+			chamado.setCliente(null);
+			}
+
+		}
+	
+	
 }
+
