@@ -1,4 +1,4 @@
-No desenvolvimento de um back-end de uma solução fullstack para um helpdesk, noções aprimoradas:
+Aprimorando conceitos em:
 
 * Docker
 * Conceitos de Spring Boot 2.x.x
@@ -11,7 +11,7 @@ No desenvolvimento de um back-end de uma solução fullstack para um helpdesk, n
 * Consumo de API via Postman
 * Criar uma API RESTful
 * Framework Lombok Criptografia e descriptografia de senhas com Bcrypt
-* Deploy do serviço na nuvem (Render)
+* Deploy do serviço na nuvem AWS usando instância ec2 
 * Padrão DTO (Data Transfer Objects)
 * MySQL em projeto Spring Boot
 * Validações com Validations
@@ -19,10 +19,10 @@ No desenvolvimento de um back-end de uma solução fullstack para um helpdesk, n
 Link da API | https://helpdesk-back.onrender.com
 ---|-----------
 
-Pequena amostra da api:
+teste a api:
 
-```POST``` Acessando o login e recebendo um token jwt no header <br/>
- uri: | https://helpdesk-back.onrender.com/login
+```POST``` Acessando o login e recebendo um token jwt no header Authorization  <br/>
+ uri: | http://ec2-54-226-239-246.compute-1.amazonaws.com:8090/login
  --|--
  ```
  arquivo JSON
@@ -55,9 +55,14 @@ Pequena amostra da api:
 > Update: <br/> .
 > findAll:  <br/>.
 > findById:  <br/>.
+> findDesassociados:  <br/>.
+
+## Futuras implementações <br/>
+> Sinup: <br/> o usuário cliente poderá fazer auto-cadastro.
+> cloView: <br/> bloqueio de rotas bloqueadas para recursos de acordo com o perfil .
+> auth:  <br/> autenticação de dois fatores ao realizar cadastro , confirmando via email.
+> message:  <br/> implementação de chat onde o usuário poderá contactar um técnico.
 
 
- ###### Abaixo imagem da api ativa rodando online
 
 
-![render-api-ativa](https://i.postimg.cc/YCtQMk98/Captura-de-tela-2023-10-21-223206.png)
