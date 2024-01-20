@@ -14,16 +14,15 @@ Aprimorando conceitos em:
 * Deploy do serviço na nuvem AWS usando instância ec2 
 * Padrão DTO (Data Transfer Objects)
 * MySQL em projeto Spring Boot
-* Validações com Validations
+* Validações com Validations <br/> <br/> <br/> <br/>
 
-Link da API | https://helpdesk-back.onrender.com
----|-----------
 
 teste a api:
-
 ```POST``` Acessando o login e recebendo um token jwt no header Authorization  <br/>
- uri: | http://ec2-54-226-239-246.compute-1.amazonaws.com:8090/login
- --|--
+| Link da API | Site  |  Repositório Front  |
+|------------------------------|------------------|--------------------|
+| API Link:http://ec2-54-226-239-246.compute-1.amazonaws.com:8090   | [Teste o Site ](http://sistema-suporte-bucket.s3-website-us-east-1.amazonaws.com/login) | [Clique aqui](https://github.com/suelenfeijo/Sistema_suporte-front) |
+
  ```
  arquivo JSON
 {
@@ -57,11 +56,14 @@ teste a api:
 > findById:  <br/>.
 > findDesassociados:  <br/>.
 
-## Futuras implementações <br/>
-> Sinup: <br/> o usuário cliente poderá fazer auto-cadastro.
-> cloView: <br/> bloqueio de rotas bloqueadas para recursos de acordo com o perfil .
-> auth:  <br/> autenticação de dois fatores ao realizar cadastro , confirmando via email.
-> message:  <br/> implementação de chat onde o usuário poderá contactar um técnico.
+## Futuras implementações 
+
+> * Sinup:  o usuário cliente poderá fazer auto-cadastro. <br/>
+> * cloView:  bloqueio de rotas bloqueadas para recursos de acordo com o perfil . <br/>
+> * auth:   autenticação de dois fatores ao realizar cadastro , confirmando via email. <br/>
+> * message:   implementação de chat onde o usuário poderá contactar um técnico. <br/>
+
+
 
 
 
