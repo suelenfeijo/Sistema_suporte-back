@@ -2,7 +2,7 @@
 
 Improving concepts in:
 
-*Docker
+* Docker
 * Spring Boot 2.x.x concepts
 * Spring Data JPA
 * Hibernate
