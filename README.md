@@ -60,7 +60,7 @@ test the api:
 ## Future implementations
 
 > * Sinup: the client user can self-register. <br/>
-> * cloView: blocking of blocked routes for resources according to profile. <br/>
+> * closeView: blocking of blocked routes for resources according to profile. <br/>
 > * auth: two-factor authentication when registering, confirming via email. <br/>
 > * message: chat implementation where the user can contact a technician. <br/>
 
